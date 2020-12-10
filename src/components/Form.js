@@ -27,7 +27,7 @@ const schema = yup.object().shape({
     name: yup.string().required('You must enter a name.'),
     email: yup.string().required('You must enter a valid email.'),
     password: yup.string().required('You must enter a password.'),
-    terms: yup.boolean().oneOf([true])
+    terms: yup.boolean().oneOf([true], 'You must agree to terms and conditions')
 })
 
 
@@ -55,12 +55,15 @@ useEffect(() => {
 //change handler
 
 const inputChange = event => {
-    const info = {
-        ...formState, [event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value
+    const info = {...formState, [event.target.name]:
+     event.target.type === 'checkbox' ? event.target.checked
+    : event.target.value
     }
     onValidate(event)
     setFormState(info)
 }
+
+
 
 const submit = event => {
     event.preventDefault()
@@ -78,7 +81,7 @@ const submit = event => {
             name: '',
             email: '',
             password: '',
-            terms: true
+            terms: event.target.reset()
         })
     })
     // debugger
@@ -126,12 +129,11 @@ const submit = event => {
              {errors.password.length > 0 ? (<p className='Errors'>{errors.password}</p>): null}
             </label>
 
-            <label htmlFor='terms' className='terms'>
+            <label htmlFor='terms' className='checkbox'>
                 Check this box to agree to our Terms and Conditions
-            <input id='terms'
+            <input
             type='checkbox'
             name='terms'
-            placeholder="Name"
             value={formState.terms}
             onChange={inputChange}
              />
