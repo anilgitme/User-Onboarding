@@ -96,7 +96,7 @@ const submit = event => {
             <label htmlFor='name'>
             Name
             <input id='name'
-            type='text'
+            type="text"
             name='name'
             placeholder="Name"
             value={formState.name}
@@ -108,7 +108,7 @@ const submit = event => {
             <label htmlFor='email'>
             Email
             <input id='email'
-            type='text'
+            type="text"
             name='email'
             placeholder="Email"
             value={formState.email}
@@ -142,7 +142,7 @@ const submit = event => {
             
             
 
-            <button disabled={subButton} type='submit'>Submit</button>
+            <button id='submitBtn' disabled={subButton} type='submit'>Submit</button>
             <pre>{JSON.stringify(user, null, 1)}</pre>
         </form>
     )
