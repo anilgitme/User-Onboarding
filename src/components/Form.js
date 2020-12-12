@@ -72,6 +72,7 @@ const submit = event => {
         email: formState.email.trim(),
         password: formState.password,
         terms: formState.terms
+        
 }
     axios.post('https://reqres.in/api/users', newUser)
     .then(res => {
@@ -132,6 +133,7 @@ const submit = event => {
             <label htmlFor='terms' className='checkbox'>
                 Check this box to agree to our Terms and Conditions
             <input
+            id='checkbox'
             type='checkbox'
             name='terms'
             value={formState.terms}
@@ -144,6 +146,9 @@ const submit = event => {
 
             <button id='submitBtn' disabled={subButton} type='submit'>Submit</button>
             <pre>{JSON.stringify(user, null, 1)}</pre>
+                
+    
+            
         </form>
     )
 }
